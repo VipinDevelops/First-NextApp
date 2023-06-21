@@ -20,6 +20,20 @@ function HomePage(props) {
     return <MeetupList meetups={props.meetups} />
 }
 
+// This function will run on each request  on the server
+// use this is you need to pre-render data frequently or need to fetch data from an API, or authentication 
+// export async function getServerSideProps(context) {
+//     const req = context.req;
+//     const res = context.res;
+//     // fetch data from an API
+
+//     return {
+//         props: { meetups: DUMMY_LIST }
+//     }
+// }
+
+// This function will run during the build process
+// use this if you need to pre-render data for all pages in advance and the data changes infrequently
 export async function getStaticProps() {
     // fetch data from an API
     return {
@@ -31,3 +45,7 @@ export async function getStaticProps() {
 }
 
 export default HomePage;
+
+// Two types of pre-rendering
+// 1. Static Generation : pre-rendering at build time
+// 2. Server-side Rendering : pre-rendering at request time
